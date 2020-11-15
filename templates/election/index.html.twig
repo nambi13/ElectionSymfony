@@ -13,8 +13,8 @@
                 <th>Pays</th>
                 <th>Voter</th>
                 <th>Participant</th>
-                <th>Voir Resultats</th>
-                <th>Finir</th>
+                <th>Voir Resultat</th>
+                <th>Terminer</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -26,8 +26,8 @@
                 <td>{{election.Pays.Nompays}}</td>
                 <td><a href="{{ path('listecandidat', {'idelection': election.id}) }}">Voter</a></td>
                 <td><a href="/president/liste/{{election.id}}">Participant</a></td>
-                <td><a href="{{ path('ficheElection', {'id': election.id}) }}">Resultats</a></td>
-                 <td><a href="/election/finir/{{election.id}}">Resultats</a></td>
+                <td><a href="{{ path('ficheElection', {'id': election.id}) }}">Resultat</a></td>
+                 <td><a href="/election/finir/{{election.id}}">Finir </a></td>
                 <td>
                     <a href="{{ path('election_show', {'id': election.id}) }}">show</a>
                     <a href="{{ path('election_edit', {'id': election.id}) }}">edit</a>
@@ -42,4 +42,5 @@
     </table>
 
     <a href="{{ path('election_new') }}">Create new</a>
+  
 {% endblock %}

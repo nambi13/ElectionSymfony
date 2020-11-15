@@ -3,10 +3,10 @@
 {% block title %}Hello ProductController!{% endblock %}
 
 {% block body %}
-<h1>Lise des produits</h1>
-<p><a href="{{ path('add-pays') }}">Ajouter un produit</a></p>
-{% for pay in pays %}
-    <table>
+<h1>Liste Pays</h1>
+<p><a href="{{ path('add-pays') }}">Ajouter Pays</a></p>
+
+    <table class="table">
         <thead>
             <th>ID</th>
             <th>Name</th>
@@ -14,11 +14,13 @@
 
         </thead>
         <tbody>
+        {% for pay in pays %}
             <td>{{ pay.id }}</td>
             <td>{{ pay.nompays }}</td>
             <td><a href="{{ path('paysupdate', {'id': pay.id}) }}">Modifier</a></td>
    
         </tbody>
+        {% endfor %}
     </table>
-{% endfor %}
+
 {% endblock %}

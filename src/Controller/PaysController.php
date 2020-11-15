@@ -66,7 +66,7 @@ class PaysController extends AbstractController
       
 
         return $this->render("pays/formpays.html.twig", [
-            "form_title" => "Ajouter un produit",
+            "form_title" => "Ajouter un Pays",
             "form_product" => $form->createView(),
         ]);
         
@@ -89,7 +89,7 @@ public function product(Request $request,int $id): Response
     }
 
     return $this->render("pays/update-pays.html.twig", [
-        "form_title" => "Modifier un produit",
+        "form_title" => "Modifier un Pays",
         "form_product" => $form->createView(),
     ]);
 }

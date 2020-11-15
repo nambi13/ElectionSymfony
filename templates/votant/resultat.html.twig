@@ -5,39 +5,43 @@
 {% block body %}
 
 
-<h1>Final</h1>
-{% for resultat in resultats %}
-    <table>
+<h1>Reultat Final</h1>
+
+    <table class="table">
         <thead>
            <th>Nom</th>
            <th>Voie Totale</th>
 
         </thead>
+        {% for resultat in resultats %}
         <tbody>
        <th>{{resultat["nom"]}}</th>
       <th>{{resultat["Nombre"]}}</th>
         
    
         </tbody>
+        {% endfor %}
     </table>
-{% endfor %}
+
 
 
 <h1>Resultat des vote sur Chaque Etat</h1>
-{% for votant in votants %}
-    <table>
+
+    <table class="table">
         <thead>
             <th>President</th>
             <th>Etat</th>
             <th>Voie Obtenu</th>
 
         </thead>
+        {% for votant in votants %}
         <tbody>
             <td>{{ votant.President.nom }}</td>
             <td>{{ votant.Etat.reference }}</td>
             <td>{{votant.nombre}}%</td>
    
         </tbody>
+        {% endfor %}
     </table>
-{% endfor %}
+
 {% endblock %}
