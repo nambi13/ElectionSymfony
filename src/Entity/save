@@ -1,0 +1,7 @@
+ //$query = $entityManager->createQuery(
+            'SELECT distinct 
+            etat_id
+            FROM App\Entity\Votant p 
+            WHERE p.etat_id = :id'
+       // )->setParameter('id', $idelection);
+       //return $query->getOneOrNullResult();

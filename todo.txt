@@ -1,0 +1,45 @@
+1-Pays
+create(V)
+read(V)
+update(V)
+Delete()
+2-Election
+create()
+read(V)
+update()
+Delete()
+3-President
+create()
+read(V)
+update(V)
+Delete()
+4-Etat
+create()
+read()
+update()
+Delete()
+5-Votant
+create(V)
+read()
+update()
+Delete()
+
+Calcul 
+Metier(V)
+Fonction calcul Pourcentage(V)
+
+Affichage(V)
+Accueil()
+Etat()
+Pays()
+II-Election
+Tableau liste Election
+Create()
+Update()
+boutton lancer()
+President->bouutant Participant()
+Create()
+read()
+Update()
+Delete()
+Resultat->listeResultatVote()

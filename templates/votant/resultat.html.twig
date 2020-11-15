@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+
+
+<h1>Final</h1>
+{% for resultat in resultats %}
+    <table>
+        <thead>
+           <th>Nom</th>
+           <th>Voie Totale</th>
+
+        </thead>
+        <tbody>
+       <th>{{resultat["nom"]}}</th>
+      <th>{{resultat["Nombre"]}}</th>
+        
+   
+        </tbody>
+    </table>
+{% endfor %}
+
+
+<h1>Resultat des vote sur Chaque Etat</h1>
+{% for votant in votants %}
+    <table>
+        <thead>
+            <th>President</th>
+            <th>Etat</th>
+            <th>Voie Obtenu</th>
+
+        </thead>
+        <tbody>
+            <td>{{ votant.President.nom }}</td>
+            <td>{{ votant.Etat.reference }}</td>
+            <td>{{votant.nombre}}%</td>
+   
+        </tbody>
+    </table>
+{% endfor %}
+{% endblock %}

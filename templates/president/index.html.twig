@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}President index{% endblock %}
+
+{% block body %}
+    <h1>President index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for president in presidents %}
+            <tr>
+                <td>{{ president.id }}</td>
+                <td>{{ president.Nom }}</td>
+                <td>
+                    <a href="{{ path('president_show', {'id': president.id}) }}">show</a>
+                    <a href="{{ path('president_edit', {'id': president.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('president_new') }}">Create new</a>
+{% endblock %}
