@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PresidentRepository::class)
@@ -30,6 +31,11 @@ class President
 
     /**
      * @ORM\Column(type="string", length=40)
+     *  * @Assert\Regex(
+     * pattern="/^[A-Z]{1}[a-z]{1,}/",
+     *  match=true,
+     * message="le Nom  doit commencer par Majuscule et pas chiffre dans le pays"
+     * )
      */
     private $Nom;
 

@@ -27,6 +27,10 @@ class Pays
     private $id;
 
     /**
+     * @Assert\Regex(
+     * pattern="/^[A-Z]{1}[a-z]{1,}/",
+     * message="les Lettres doit commencer par Majuscule et pas de chiffre"
+     * )
      * @ORM\Column(type="string", length=40)
      */
     private $nompays;

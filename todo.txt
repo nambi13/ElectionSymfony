@@ -9,7 +9,7 @@ read(V)
 update()
 Delete()
 3-President
-create()
+create(V)
 read(V)
 update(V)
 Delete()
