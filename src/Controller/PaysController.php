@@ -49,25 +49,40 @@ class PaysController extends AbstractController
     
 
     /**
-     * @Route("/add-pays", name="add-pays")
+     * @Route("/add-pays", name="add-pays",methods={"GET","POST"})
      */
     public function addProduct(Request $request): Response
     {
         $pays=new Pays();
         $form = $this->createForm(PaysFormType::class,$pays);
+        
         $form->handleRequest($request);
+    
         if($form->isSubmitted() && $form->isValid())
         {
+           // try{  
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($pays);
             $entityManager->flush();
             // ... do something
+            /*
+            }catch(\Exception $e){
+                
+                return $this->render("pays/formpays.html.twig", [
+                    "form_title" => "Ajouter un Pays",
+                    "form_product" => $form->createView(),
+                    "error"=>$e->getMessage()
+                ]);
+
+            }
+            */
         }
       
 
         return $this->render("pays/formpays.html.twig", [
             "form_title" => "Ajouter un Pays",
             "form_product" => $form->createView(),
+            "error"=>''
         ]);
         
     }

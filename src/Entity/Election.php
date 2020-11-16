@@ -31,7 +31,7 @@ class Election
     private $Pays;
 
     /**
-     * @ORM\OneToMany(targetEntity=President::class, mappedBy="Election")
+     * @ORM\OneToMany(targetEntity=President::class, mappedBy="Election",cascade={"persist", "remove"})
      */
     private $presidents;
 

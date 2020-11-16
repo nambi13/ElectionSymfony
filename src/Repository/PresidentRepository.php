@@ -5,6 +5,11 @@ namespace App\Repository;
 use App\Entity\President;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\EntityManager;
+use App\Exception\YourBadRequestException;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 /**
  * @method President|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,4 +52,18 @@ class PresidentRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function test(President $entity){
+        try{
+            $entityManager = $this->getEntityManager();
+            $entityManager->persist($entity);
+         
+        }catch(UniqueConstraintViolationException $e){
+            return 0;
+        }
+
+
+
+
+
+    }
 }

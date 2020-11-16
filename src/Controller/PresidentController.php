@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\EntityManager;
@@ -73,9 +74,13 @@ class PresidentController extends AbstractController
 
 
         //dump($article);
-        if($form->isSubmitted() && $form->isValid())
+        if($form->isSubmitted()){
+        if($form->isValid())
         {
+           try{
             $article->setElection($Elec[0]);
+          //  $x=$presidentRepository->test($article);
+           // dd($x);
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($article);
             $manager->flush();
@@ -87,8 +92,12 @@ class PresidentController extends AbstractController
         'id'=>$id
             ]);
             return $response;
+            }catch(UniqueConstraintViolationException $e){
+                $this->get('session')->getFlashBag()->set('notice', 'Utilisateur Deja Existant sur l election');
+            }
     
     } 
+    }
     
         return $this->render('president/new.html.twig', [
             'president' => $article,

@@ -3,6 +3,11 @@
 {% block title %}New President{% endblock %}
 
 {% block body %}
+{% for flashMessage in app.session.flashbag.get('notice') %}
+
+    {{ flashMessage }}
+
+{% endfor %}
     <h1>Create new President</h1>
 
     {{ include('president/_form.html.twig') }}

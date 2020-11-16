@@ -6,9 +6,18 @@ use App\Repository\PresidentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=PresidentRepository::class)
+ * @ORM\Table(
+ *      name="President",
+ *      uniqueConstraints={@ORM\UniqueConstraint(columns={"Nom", "election_id"})}
+ * )
+ * @UniqueEntity(
+ *      fields={"Nom","Election"},
+ *      message="League for given country already exists in database."
+ * )
  */
 class President
 {
@@ -24,9 +33,17 @@ class President
      */
     private $Nom;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Election::class, inversedBy="presidents")
-     * @ORM\JoinColumn(nullable=false)
+      /**
+     * @ORM\ManyToOne(
+     *      targetEntity=Election::class,
+     *      inversedBy="president"
+     * )
+     * @ORM\JoinColumn(
+     *      name="election_id",
+     *      referencedColumnName="id",
+     *      nullable=false,
+     *      onDelete="CASCADE"
+     * )
      */
     private $Election;
 

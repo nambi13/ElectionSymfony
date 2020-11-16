@@ -5,10 +5,17 @@ namespace App\Entity;
 use App\Repository\PaysRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=PaysRepository::class)
+ * @UniqueEntity(
+ *     fields={"nompays"},
+ *     errorPath="nompays",
+ *     message="Pays deja existant."
+ * )
  */
 class Pays
 {
@@ -52,6 +59,10 @@ class Pays
 
     public function setNompays(string $nompays): self
     {
+        if($nompays=="0"){
+            throw new \Exception("Nom Pays_Anormale");
+
+        }
         $this->nompays = $nompays;
 
         return $this;
